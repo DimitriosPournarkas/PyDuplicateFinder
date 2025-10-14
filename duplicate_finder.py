@@ -100,6 +100,6 @@ def find_dupes(directory, use_hash, detailed):
                 click.echo(f"   - {Path(path).name} in {Path(path).parent}")
         click.echo()
 
-
+#C:\GitHub\Duplicate_finder\test
 if __name__ == '__main__':
     find_dupes()
