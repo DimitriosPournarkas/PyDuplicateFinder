@@ -56,6 +56,8 @@ class DuplicateFinderGUI:
         self.root.geometry("600x500")
         self.root.resizable(True, True)
         
+        self.duplicates = {}  # Store found duplicates
+        
         # Directory selection frame
         frame_dir = tk.Frame(root)
         frame_dir.pack(pady=10, padx=10, fill=tk.X)
@@ -72,6 +74,9 @@ class DuplicateFinderGUI:
         
         tk.Button(frame_btn, text="Scan", command=self.scan_duplicates, 
                  bg="#4CAF50", fg="white", font=("Arial", 10, "bold"), 
+                 padx=20, pady=8).pack(side=tk.LEFT, padx=5)
+        tk.Button(frame_btn, text="Delete Duplicates", command=self.delete_duplicates, 
+                 bg="#FF9800", fg="white", font=("Arial", 10, "bold"), 
                  padx=20, pady=8).pack(side=tk.LEFT, padx=5)
         tk.Button(frame_btn, text="Clear", command=self.clear_output, 
                  bg="#f44336", fg="white", font=("Arial", 10, "bold"), 
@@ -137,7 +142,10 @@ class DuplicateFinderGUI:
             if not duplicates:
                 self.output("No actual duplicates found.")
                 self.status_var.set("Ready - No duplicates found")
+                self.duplicates = {}
                 return
+            
+            self.duplicates = duplicates  # Store for deletion
             
             total_dupes = sum(len(paths) - 1 for paths in duplicates.values())
             self.output(f"Found {total_dupes} duplicate files:\n")
@@ -157,6 +165,64 @@ class DuplicateFinderGUI:
     def clear_output(self):
         self.output_text.delete(1.0, tk.END)
         self.status_var.set("Ready")
+    
+    def delete_duplicates(self):
+        if not self.duplicates:
+            messagebox.showwarning("Warning", "No duplicates found yet! Please scan first.")
+            return
+        
+        total_dupes = sum(len(paths) - 1 for paths in self.duplicates.values())
+        
+        response = messagebox.askyesno(
+            "Confirm Delete",
+            f"This will delete {total_dupes} duplicate files.\n\n"
+            f"One copy of each file will be kept.\n\n"
+            f"Are you sure you want to continue?"
+        )
+        
+        if not response:
+            return
+        
+        deleted_count = 0
+        errors = []
+        
+        self.status_var.set("Deleting duplicates...")
+        self.output("\n" + "=" * 70)
+        self.output("DELETION PROCESS:")
+        self.output("=" * 70 + "\n")
+        
+        for file_hash, paths in self.duplicates.items():
+            # Keep first file, delete the rest
+            kept_file = paths[0]
+            self.output(f"Keeping: {kept_file}")
+            
+            for duplicate in paths[1:]:
+                try:
+                    os.remove(duplicate)
+                    self.output(f"  Deleted: {duplicate}")
+                    deleted_count += 1
+                except Exception as e:
+                    error_msg = f"  Error deleting {duplicate}: {str(e)}"
+                    self.output(error_msg)
+                    errors.append(error_msg)
+            
+            self.output("")
+        
+        self.output("=" * 70)
+        self.output(f"SUMMARY: {deleted_count} files deleted successfully.")
+        if errors:
+            self.output(f"Errors: {len(errors)} files could not be deleted.")
+        
+        self.status_var.set(f"Deleted {deleted_count} duplicates")
+        self.duplicates = {}  # Clear stored duplicates
+        
+        if errors:
+            messagebox.showwarning(
+                "Deletion Complete with Errors",
+                f"Deleted {deleted_count} files.\n{len(errors)} files could not be deleted."
+            )
+        else:
+            messagebox.showinfo("Success", f"Successfully deleted {deleted_count} duplicate files!")
 
 
 if __name__ == '__main__':
