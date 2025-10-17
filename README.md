@@ -1,18 +1,26 @@
-CLI File Duplicate Finder
+# GUI File Duplicate Finder
 
-A lightweight command-line tool to find duplicate files in your directory structure. 
-Supports two detection modes: fast (by file size and name) or accurate (by content hash).
+A user-friendly graphical tool to find and remove duplicate files in your directory structure.
+Uses a two-pass detection method: fast file size comparison followed by SHA256 content hash verification.
 
-Features:
-- Recursively scan directories
-- Find duplicates by size + name (fast)
-- Verify by content hash (accurate)
-- Detailed or compact output
-- Color-coded results
+## Features
 
-Usage:
-python dupes.py /path/to/directory
-python dupes.py /path/to/directory --use-hash --detailed
+- **Graphical User Interface** - Easy-to-use tkinter-based GUI
+- **Two-pass detection algorithm**:
+  1. Fast first pass: Groups files by size
+  2. Accurate second pass: Verifies duplicates with SHA256 hash
+- **Safe deletion** - Always keeps one copy of each file
+- **Non-blocking scan** - Threaded scanning keeps GUI responsive
+- **Detailed results** - Shows all duplicate file locations
+- **Confirmation dialogs** - Prevents accidental deletions
 
-Install:
-pip install click
+## Requirements
+
+- Python 3.x
+- tkinter (usually included with Python)
+- No external dependencies needed
+
+## Usage
+
+1. Run the application:
+```bash
