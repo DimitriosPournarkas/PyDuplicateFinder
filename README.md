@@ -24,5 +24,17 @@ Uses a two-pass detection method: fast file size comparison followed by SHA256 c
 ![Duplicate Finder Interface](Duplicate1.png)
 ## Usage
 
-1. Run the application:
+## Usage
+
+1. **Start the application:**
 ```bash
+   python duplicate_finder.py
+```
+
+2. **Browse** to select a directory to scan
+
+3. **Scan** to find duplicate files
+
+4. **Delete Duplicates** to remove duplicates (keeps one copy of each file)
+
+5. Use **Clear** to reset the results view
