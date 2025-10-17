@@ -24,8 +24,6 @@ Uses a two-pass detection method: fast file size comparison followed by SHA256 c
 ![Duplicate Finder Interface](Duplicate1.png)
 ## Usage
 
-## Usage
-
 1. **Start the application:**
 ```bash
    python duplicate_finder.py
