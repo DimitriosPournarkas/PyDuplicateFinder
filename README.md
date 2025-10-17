@@ -19,7 +19,9 @@ Uses a two-pass detection method: fast file size comparison followed by SHA256 c
 - Python 3.x
 - tkinter (usually included with Python)
 - No external dependencies needed
+## Screenshot
 
+![Duplicate Finder Interface](Duplicate1.png)
 ## Usage
 
 1. Run the application:
