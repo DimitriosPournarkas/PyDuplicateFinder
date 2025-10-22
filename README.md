@@ -16,7 +16,7 @@ Uses a two-pass detection method: fast file size comparison followed by SHA256 c
 
 ## Requirements
 
-- Python 3.x
+- Python 3.6+
 - tkinter (usually included with Python)
 - No external dependencies needed
 ## Screenshot
@@ -24,10 +24,9 @@ Uses a two-pass detection method: fast file size comparison followed by SHA256 c
 ![Duplicate Finder Interface](Duplicate1.png)
 ## Usage
 
-1. **Start the application:**
-```bash
-   python duplicate_finder.py
-```
+1. **Start the application**
+   - From source: `python duplicate_finder.py`
+   - Or run the executable directly
 
 2. **Browse** to select a directory to scan
 
@@ -36,3 +35,11 @@ Uses a two-pass detection method: fast file size comparison followed by SHA256 c
 4. **Delete Duplicates** to remove duplicates (keeps one copy of each file)
 
 5. Use **Clear** to reset the results view
+
+## How It Works
+
+1. **Size Comparison**: Quickly groups files by file size
+2. **Hash Verification**: Calculates SHA256 hashes for potential duplicates
+3. **Safe Cleanup**: Deletes duplicates while keeping the original file
+
+## Download
