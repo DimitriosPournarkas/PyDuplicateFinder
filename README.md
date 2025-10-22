@@ -43,3 +43,4 @@ Uses a two-pass detection method: fast file size comparison followed by SHA256 c
 3. **Safe Cleanup**: Deletes duplicates while keeping the original file
 
 ## Download
+👉 [Get the latest release here](https://github.com/DimitriosPournarkas/PyDuplicateFinder/releases/tag/V1)
