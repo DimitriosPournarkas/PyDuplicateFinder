@@ -48,4 +48,4 @@ If you have Python installed, you can also run the source code:
 3. **Safe Cleanup**: Deletes duplicates while keeping the original file
 
 ## License
-MIT License - see LICENSE file for details
+MIT License - see [LICENSE](https://github.com/DimitriosPournarkas/PyDuplicateFinder/blob/main/LICENSE) file for details
