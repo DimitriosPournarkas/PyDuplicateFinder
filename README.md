@@ -13,12 +13,17 @@ Uses a two-pass detection method: fast file size comparison followed by SHA256 c
 - **Non-blocking scan** - Threaded scanning keeps GUI responsive
 - **Detailed results** - Shows all duplicate file locations
 - **Confirmation dialogs** - Prevents accidental deletions
+### 🚀 For Most Users (Recommended)
+👉 [Download the ready-to-use executable](https://github.com/DimitriosPournarkas/PyDuplicateFinder/releases/tag/V1)  
+- **No installation needed**
+- **Just download and double-click**
+- **Works immediately on Windows**
 
-## Requirements
-
-- Python 3.6+
-- tkinter (usually included with Python)
-- No external dependencies needed
+### 💻 For Python Developers
+If you have Python installed, you can also run the source code:
+1. Download the `duplicate_finder.py` file
+2. Open command prompt in the download folder
+3. Type: `python duplicate_finder.py`
 ## Screenshot
 
 ![Duplicate Finder Interface](Duplicate1.png)
@@ -42,5 +47,5 @@ Uses a two-pass detection method: fast file size comparison followed by SHA256 c
 2. **Hash Verification**: Calculates SHA256 hashes for potential duplicates
 3. **Safe Cleanup**: Deletes duplicates while keeping the original file
 
-## Download
-👉 [Get the latest release here](https://github.com/DimitriosPournarkas/PyDuplicateFinder/releases/tag/V1)
+## License
+MIT License - see LICENSE file for details
